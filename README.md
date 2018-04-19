@@ -52,6 +52,8 @@ To run these containers:
 * main.java - wrapper class that invokes the H2o model
 * h2o-genmodel.jar - shared library that contains all necessary dependencies for running model
 * gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java - H2o generated pojo for model
+* creditcard.csv - training dataset not in the repo due to size, but can be found here https://www.kaggle.com/mlg-ulb/creditcardfraud/downloads/creditcardfraud.zip/3
+
 * To build:
 ```javac --cp h2o-genmodel.jar -J-Xmx2g -J-XX:MaxPermSize=128m gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java main.java```
 * To run:  
