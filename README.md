@@ -1,7 +1,6 @@
 # ReactiveBPMDemo
 
-This repo contains the code for the POC that is part of RedHat Session S103127:  Using BPM Suite in a reactive architecture with microservices deployed in Docker containers and managed in Amazon ECS (EC2 Container Service)
-
+This repo contains the code for the POC that is part of RedHat Session S1506:  Using machine learning, Red Hat JBoss BPM Suite, and reactive microservices
 
 # BPM Suite Dockerfile and setup files
 Dockerfile - This file can be used to build a docker imaging of BPM Suite.
@@ -49,6 +48,14 @@ To run these containers:
   
   ```docker run -p 2181:2181 --name zookeeper -d zookeeper:latest```
 
+# H2o components
+main.java - wrapper class that invokes the H2o model
+h2o-genmodel.jar - shared library that contains all necessary dependencies for running model
+gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java - H2o generated pojo for model
 
+To build:
+javac --cp h2o-genmodel.jar -J-Xmx2g -J-XX:MaxPermSize=128m gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java main.java
+To run:  
+java -cp .;h2o-genmodel.jar main
 
 
