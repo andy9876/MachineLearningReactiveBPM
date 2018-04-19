@@ -54,8 +54,11 @@ h2o-genmodel.jar - shared library that contains all necessary dependencies for r
 gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java - H2o generated pojo for model
 
 To build:
+
 ```javac --cp h2o-genmodel.jar -J-Xmx2g -J-XX:MaxPermSize=128m gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java main.java```
+
 To run:  
+
 ```java -cp .;h2o-genmodel.jar main```
 
 
