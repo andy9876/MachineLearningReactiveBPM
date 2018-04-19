@@ -49,9 +49,9 @@ To run these containers:
   ```docker run -p 2181:2181 --name zookeeper -d zookeeper:latest```
 
 # H2o components
-main.java - wrapper class that invokes the H2o model
-h2o-genmodel.jar - shared library that contains all necessary dependencies for running model
-gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java - H2o generated pojo for model
+* main.java - wrapper class that invokes the H2o model
+* h2o-genmodel.jar - shared library that contains all necessary dependencies for running model
+* gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java - H2o generated pojo for model
 
 To build:
 
