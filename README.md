@@ -1,4 +1,4 @@
-# ReactiveBPMDemo
+# MachineLearningReactiveBPMDemo
 
 This repo contains the code for the POC that is part of RedHat Session S1506:  Using machine learning, Red Hat JBoss BPM Suite, and reactive microservices
 
