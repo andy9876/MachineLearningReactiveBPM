@@ -1,3 +1,4 @@
+
 # MachineLearningReactiveBPM
 
 This repo contains the code for the POC that is part of RedHat Session S1506:  Using machine learning, Red Hat JBoss BPM Suite, and reactive microservices
@@ -57,6 +58,7 @@ To run these containers:
 * h2o-genmodel.jar - shared library that contains all necessary dependencies for running model
 * gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java - H2o generated pojo for model
 * creditcard.csv - training dataset not in the repo due to size, but can be found here https://www.kaggle.com/mlg-ulb/creditcardfraud/downloads/creditcardfraud.zip/3
+* Credit Card Fraud demo.flow - H2o flow notebook that shows the steps taken to build the model
 
 * To build:
 ```javac --cp h2o-genmodel.jar -J-Xmx2g -J-XX:MaxPermSize=128m gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java main.java```
