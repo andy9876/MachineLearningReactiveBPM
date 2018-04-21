@@ -33,6 +33,9 @@ This contains the source code for the bpm suite fraud example
 This is a java based microservice that generates a random value in the action attribute of either "Tranaction OK" or "Fraudulent Transaction", for example:
 
   ```{"id": "33bb75db-6e13-48ee-8a54-b3976d3d065b","action": "Run Fraud Model"}```
+NOTE - if unit testing with the above message, YOU MUST PASS THE KAFKA key!! Otherwise the consumer will error.
+Example unit test using kafka console producer to pass the key:
+```./kafka-console-producer.sh --topic card.transaction --broker-list 18.204.180.80:9092 --property "parse.key=true" --property "key.separator=:"```
 
 Leverage the Dockerfile to build the container.
 To run the docker container:
