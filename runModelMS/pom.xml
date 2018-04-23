@@ -5,7 +5,7 @@
   <groupId>com</groupId>
   <artifactId>decisioning</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>kjar</packaging>
+  <packaging>jar</packaging>
 
   <name>decisioning</name>
   <url>http://maven.apache.org</url>
@@ -68,7 +68,11 @@
       <artifactId>zookeeper</artifactId>
       <version>3.4.6</version>
     </dependency>
-    
+    <dependency>
+    <groupId>ai.h2o</groupId>
+    <artifactId>h2o-genmodel</artifactId>
+    <version>3.18.0.8</version>
+    </dependency>
   </dependencies>
   
    <build>
@@ -106,13 +110,6 @@
       </configuration>
     </plugin>
     
-    <plugin>
-        <!-- https://mvnrepository.com/artifact/org.kie/kie-maven-plugin -->	
-    	<groupId>org.kie</groupId>
-    	<artifactId>kie-maven-plugin</artifactId>
-    	<version>6.4.0.Final</version>
-  		<extensions>true</extensions>    
-    </plugin>
        
   </plugins>
 

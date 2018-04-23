@@ -32,12 +32,14 @@ public class KafkaInstance {
 
         //****SET THE BELOW IP TO THE IP OF THE SERVER RUNNING KAFKA******
         props.put("metadata.broker.list", configuration.getString("metadata.broker.list"));
+        LOG.info("setting metadata.broker list" + configuration.getString("metadata.broker.list"));
         props.put("serializer.class", configuration.getString("serializer.class"));
-
+        LOG.info("serializer.class" + configuration.getString("serializer.class"));
         //setup the kafka producer data structures
         config = new ProducerConfig(props);
+        LOG.info("set config");
         producer = new Producer<String, String>(config);
-
+        LOG.info("created producer");
 
     }
 
