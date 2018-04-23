@@ -61,7 +61,7 @@ To run these containers:
 * Credit Card Fraud demo.flow - H2o flow notebook that shows the steps taken to build the model
 
 * To build:
-```javac --cp h2o-genmodel.jar -J-Xmx2g -J-XX:MaxPermSize=128m gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java main.java```
+```javac -cp h2o-genmodel.jar -J-Xmx2g -J-XX:MaxPermSize=128m gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java main.java```
 * To run:  
 ```java -cp .;h2o-genmodel.jar main```
 
