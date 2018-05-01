@@ -2,7 +2,7 @@ package com.decisioning;
 
 import com.decisioning.KafkaInstance;
 import com.decisioning.KafkaProducer;
-import com.decisioning.RunModelMS;
+import com.decisioning.CalcFeaturesMS;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,16 +21,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class ConsumerGroupRunModelMS {
+public class ConsumerGroupCalcFeaturesMS {
     private final ConsumerConnector consumer;
     private final String topic;
     private ExecutorService executor;
     private String line;
     private String key;
-    private static final Logger LOG = LoggerFactory.getLogger(ConsumerGroupRunModelMS.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ConsumerGroupCalcFeaturesMS.class);
     public static Configuration configuration = null;
 
-    public ConsumerGroupRunModelMS(String a_zookeeper, String a_groupId, String a_topic) {
+    public ConsumerGroupCalcFeaturesMS(String a_zookeeper, String a_groupId, String a_topic) {
         consumer = kafka.consumer.Consumer.createJavaConsumerConnector(createConsumerConfig(a_zookeeper, a_groupId));
         topic = a_topic;
     }
@@ -80,7 +80,7 @@ public class ConsumerGroupRunModelMS {
         String groupId = args[1];
         String topic = args[2];
         int threads = Integer.parseInt(args[3]);
-        ConsumerGroupRunModelMS example = new ConsumerGroupRunModelMS(zooKeeper, groupId, topic);
+        ConsumerGroupCalcFeaturesMS example = new ConsumerGroupCalcFeaturesMS(zooKeeper, groupId, topic);
         example.run(threads);
     }
 
@@ -118,12 +118,12 @@ public class ConsumerGroupRunModelMS {
 
                 LOG.info("--------------------------------------------------------");
                 LOG.info("Thread " + m_threadNumber + ": " + line);
-                stateToCheck = "Features Calculated";
+                stateToCheck = "Calc Features";
                 if (line.contains(stateToCheck))                
                 {	                	                	
-                	LOG.info("in the RunModelMS service");
-                	RunModelMS RunModelMS = new RunModelMS();
-                	line = RunModelMS.execute(line, stateToCheck);
+                	LOG.info("in the CalcFeaturesMS service");
+                	CalcFeaturesMS CalcFeatures = new CalcFeaturesMS();
+                	line = CalcFeatures.execute(line, stateToCheck);
                 	LOG.info("going to write out " + line);
                 	KafkaProducer kafkaProducer = new KafkaProducer(line, configuration, key);
                 	kafkaInstance.getProducer().send(kafkaProducer.execute());

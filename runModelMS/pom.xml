@@ -97,6 +97,21 @@
               </transformers>
             </configuration>
           </execution>          
+          <execution>
+            <id>second</id>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+            <outputFile>target/ConsumerGroupCalcFeaturesMS.jar</outputFile>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>com.decisioning.ConsumerGroupCalcFeaturesMS</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
 	      </executions>
       </plugin>
                               
