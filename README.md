@@ -26,6 +26,8 @@ After building the image, use the below command to run the docker container
 # Kie Server Kafka Extension
 You can find David Murphy's kie server kafka extension at the below repo
 https://gitlab.com/murph83/kie-server-kafka.git
+The modified version used for the demo can be found here https://github.com/andy9876/kie-server-kafka
+
 
 # BPM Suite project
 This contains the source code for the bpm suite fraud example 
