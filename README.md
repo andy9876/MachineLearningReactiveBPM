@@ -1,6 +1,6 @@
 # MachineLearningReactiveBPM
 
-This repo contains the code for the POC that is part of RedHat Session S1506:  Using machine learning, Red Hat JBoss BPM Suite, and reactive microservices
+This repo contains the code for the POC that is part of RedHat Session S1506:  Using machine learning, Red Hat JBoss BPM Suite, and reactive microservices.  It demonstrates how you can integrate jBPM, reactive java microservices, and H20 machine learning with Kafka using docker containers.  
 
 # BPM Suite Dockerfile and setup files
 Dockerfile - This file can be used to build a docker imaging of BPM Suite.
@@ -32,7 +32,7 @@ The modified version used for the demo can be found here https://github.com/andy
 This contains the source code for the bpm suite fraud example 
 
 # RunModelMS
-This is a java based microservice that invokes a H2o model.  The H2o model takes the follow parameters:  time, 28 various numerical inputs, and transaction amount.  It will return a p.label value for 1 if fraudulent or 0 for not fraudulent.  Below are some sample events that can be placed on the card.transaction topic for it to trigger from a unit testing perspective:
+This is a java based microservice that invokes a H2o model.  The H2o model takes the follow parameters:  time, 28 various numerical inputs, and transaction amount.  It will return a p.label value for 1 if fraudulent or 0 for not fraudulent.  Class probabilities value indicates the probability of the p.label accuracy.  Below are some sample events that can be placed on the card.transaction topic for it to trigger from a unit testing perspective:
 
 * Fraudulent transaction
 
@@ -71,6 +71,7 @@ To run these containers:
   ```docker run -p 2181:2181 --name zookeeper -d zookeeper:latest```
 
 # H2o components
+For the H20 model, we leveraged Gradient Boosting Machine (GBM) Algorithm
 * gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java - H2o generated pojo for model
 * creditcard.csv - training dataset not in the repo due to size, but can be found here https://www.kaggle.com/mlg-ulb/creditcardfraud/downloads/creditcardfraud.zip/3
 * Credit Card Fraud demo.flow - H2o flow notebook that shows the steps taken to build the model
