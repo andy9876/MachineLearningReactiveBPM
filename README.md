@@ -33,7 +33,7 @@ The modified version used for the demo can be found here https://github.com/andy
 # BPM Suite project
 This contains the source code for the bpm suite fraud example 
 
-# RunModelMS
+# RunModelMS microservice
 This is a java based microservice that invokes a H2o model.  The H2o model takes the follow parameters:  time, 28 various numerical inputs, and transaction amount.  It will return a p.label value for 1 if fraudulent or 0 for not fraudulent.  Class probabilities value indicates the probability of the p.label accuracy.  Below are some sample events that can be placed on the card.transaction topic for it to trigger from a unit testing perspective:
 
 * Fraudulent transaction
@@ -53,7 +53,7 @@ To run the docker container:
 
   ```docker run -d runmodelms:latest```
 
-# CalcFeaturesMS
+# CalcFeaturesMS microservice
 This is a java based microservice that simulates calculating the 28 features needed by the H20 model.  It triggers on the action "Calc Features" and randomly returns a pre-baked set of 28 features that are known to either generate a fraud or non-fraud response from the model.  
 
 Leverage the Dockerfile to build the container.
@@ -72,7 +72,7 @@ To run these containers:
   
   ```docker run -p 2181:2181 --name zookeeper -d zookeeper:latest```
 
-# H2o components
+# H2o Model & Components
 For the H20 model, we leveraged Gradient Boosting Machine (GBM) Algorithm
 * gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b.java - H2o generated pojo for model
 * creditcard.csv - training dataset not in the repo due to size, but can be found here https://www.kaggle.com/mlg-ulb/creditcardfraud/downloads/creditcardfraud.zip/3
