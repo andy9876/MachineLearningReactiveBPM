@@ -1,5 +1,8 @@
 package com.decisioning;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import hex.genmodel.easy.RowData;
@@ -24,38 +27,38 @@ public class RunModelMS {
         //parse out the variables needed from the kafka stream
         appid = line.split(":")[1].trim().split(",")[0].split("\"")[1];
         LOG.info("appid is "+appid);
-        time = line.split(":")[8].trim().split(",")[0].split("\"")[1];
+        time = line.split(":")[7].trim().split(",")[0].split("\"")[1];
         LOG.info("time is "+time);
-        v1 = line.split(":")[9].trim().split(",")[0].split("\"")[1];
+        v1 = line.split(":")[8].trim().split(",")[0].split("\"")[1];
         LOG.info("v1 is "+v1);
-        v2 = line.split(":")[10].trim().split(",")[0].split("\"")[1];
-        v3 = line.split(":")[11].trim().split(",")[0].split("\"")[1];
-        v4 = line.split(":")[12].trim().split(",")[0].split("\"")[1];
-        v5 = line.split(":")[13].trim().split(",")[0].split("\"")[1];
-        v6 = line.split(":")[14].trim().split(",")[0].split("\"")[1];
-        v7 = line.split(":")[15].trim().split(",")[0].split("\"")[1];
-        v8 = line.split(":")[16].trim().split(",")[0].split("\"")[1];
-        v9 = line.split(":")[17].trim().split(",")[0].split("\"")[1];
-        v10 = line.split(":")[18].trim().split(",")[0].split("\"")[1];
-        v11 = line.split(":")[19].trim().split(",")[0].split("\"")[1];
-        v12 = line.split(":")[20].trim().split(",")[0].split("\"")[1];
-        v13 = line.split(":")[21].trim().split(",")[0].split("\"")[1];
-        v14 = line.split(":")[22].trim().split(",")[0].split("\"")[1];
-        v15 = line.split(":")[23].trim().split(",")[0].split("\"")[1];
-        v16 = line.split(":")[24].trim().split(",")[0].split("\"")[1];
-        v17 = line.split(":")[25].trim().split(",")[0].split("\"")[1];
-        v18 = line.split(":")[26].trim().split(",")[0].split("\"")[1];
-        v19 = line.split(":")[27].trim().split(",")[0].split("\"")[1];
-        v20 = line.split(":")[28].trim().split(",")[0].split("\"")[1];
-        v21 = line.split(":")[29].trim().split(",")[0].split("\"")[1];
-        v22 = line.split(":")[30].trim().split(",")[0].split("\"")[1];
-        v23 = line.split(":")[31].trim().split(",")[0].split("\"")[1];
-        v24 = line.split(":")[32].trim().split(",")[0].split("\"")[1];
-        v25 = line.split(":")[33].trim().split(",")[0].split("\"")[1];
-        v26 = line.split(":")[34].trim().split(",")[0].split("\"")[1];
-        v27 = line.split(":")[35].trim().split(",")[0].split("\"")[1];
-        v28 = line.split(":")[36].trim().split(",")[0].split("\"")[1];
-        amount = line.split(":")[37].trim().split(",")[0].split("\"")[1];
+        v2 = line.split(":")[9].trim().split(",")[0].split("\"")[1];
+        v3 = line.split(":")[10].trim().split(",")[0].split("\"")[1];
+        v4 = line.split(":")[11].trim().split(",")[0].split("\"")[1];
+        v5 = line.split(":")[12].trim().split(",")[0].split("\"")[1];
+        v6 = line.split(":")[13].trim().split(",")[0].split("\"")[1];
+        v7 = line.split(":")[14].trim().split(",")[0].split("\"")[1];
+        v8 = line.split(":")[15].trim().split(",")[0].split("\"")[1];
+        v9 = line.split(":")[16].trim().split(",")[0].split("\"")[1];
+        v10 = line.split(":")[17].trim().split(",")[0].split("\"")[1];
+        v11 = line.split(":")[18].trim().split(",")[0].split("\"")[1];
+        v12 = line.split(":")[19].trim().split(",")[0].split("\"")[1];
+        v13 = line.split(":")[20].trim().split(",")[0].split("\"")[1];
+        v14 = line.split(":")[21].trim().split(",")[0].split("\"")[1];
+        v15 = line.split(":")[22].trim().split(",")[0].split("\"")[1];
+        v16 = line.split(":")[23].trim().split(",")[0].split("\"")[1];
+        v17 = line.split(":")[24].trim().split(",")[0].split("\"")[1];
+        v18 = line.split(":")[25].trim().split(",")[0].split("\"")[1];
+        v19 = line.split(":")[26].trim().split(",")[0].split("\"")[1];
+        v20 = line.split(":")[27].trim().split(",")[0].split("\"")[1];
+        v21 = line.split(":")[28].trim().split(",")[0].split("\"")[1];
+        v22 = line.split(":")[29].trim().split(",")[0].split("\"")[1];
+        v23 = line.split(":")[30].trim().split(",")[0].split("\"")[1];
+        v24 = line.split(":")[31].trim().split(",")[0].split("\"")[1];
+        v25 = line.split(":")[32].trim().split(",")[0].split("\"")[1];
+        v26 = line.split(":")[33].trim().split(",")[0].split("\"")[1];
+        v27 = line.split(":")[34].trim().split(",")[0].split("\"")[1];
+        v28 = line.split(":")[35].trim().split(",")[0].split("\"")[1];
+        amount = line.split(":")[36].trim().split(",")[0].split("\"")[1];
         
 		hex.genmodel.GenModel rawModel = null;
 		rawModel = (hex.genmodel.GenModel) new gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b();	    
@@ -105,12 +108,16 @@ public class RunModelMS {
 	    
 		//Label (aka prediction) is fraudulent transaction: 0
 		//Class probabilities: 0.999762092129436,2.3790787056395188E-4
-
+		
+		Date date = new Date();
+		long currentTime = date.getTime();
+		Timestamp ts = new Timestamp(currentTime);		
+		
 			//if the H2o model thinks its fraud, return Fraudulent Transaction
 	  		if (p.label.equalsIgnoreCase("1"))
-	    		line = "{\"id\":\"" + appid + "\",\"action\": \"Fraudulent Transaction\",\"data\": {\"timestamp\": \"2016-06-10T14:33:29.102-00:00\"},\"p.label\":\"" + p.label + "\",\"p.classProbability\":\"," + p.classProbabilities[0] + "\"}";
+	    		line = "{\"id\":\"" + appid + "\",\"action\": \"Fraudulent Transaction\",\"data\": {\"timestamp\": \"" + ts + "\"},\"p.label\":\"" + p.label + "\",\"p.classProbability\":\"," + p.classProbabilities[0] + "\"}";
 	  		else  //if h2o model does not think its fraud, return Transaction OK
-	  			line = "{\"id\":\"" + appid + "\",\"action\": \"Transaction OK\",\"data\": {\"timestamp\": \"2016-06-10T14:33:29.102-00:00\"},\"p.label\":\"" + p.label + "\",\"p.classProbability\":\"," + p.classProbabilities[0] + "\"}";	  			
+	  			line = "{\"id\":\"" + appid + "\",\"action\": \"Transaction OK\",\"data\": {\"timestamp\": \"" + ts + "\"},\"p.label\":\"" + p.label + "\",\"p.classProbability\":\"," + p.classProbabilities[0] + "\"}";	  			
 	  		return line;
 	}
 }
