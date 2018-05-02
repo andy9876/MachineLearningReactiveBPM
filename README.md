@@ -2,6 +2,8 @@
 
 This repo contains the code for the POC that is part of RedHat Session S1506:  Using machine learning, Red Hat JBoss BPM Suite, and reactive microservices.  It demonstrates how you can integrate jBPM, reactive java microservices, and H20 machine learning with Kafka using docker containers.  
 
+![Alt text](https://github.com/andy9876/MachineLearningReactiveBPM/diagram.jpg "")
+
 # BPM Suite Dockerfile and setup files
 Dockerfile - This file can be used to build a docker imaging of BPM Suite.
 For it to work, you need to create 3 directories:  patch, installers, and support.
