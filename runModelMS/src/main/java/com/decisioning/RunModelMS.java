@@ -9,7 +9,7 @@ import hex.genmodel.easy.RowData;
 import hex.genmodel.easy.exception.PredictException;
 import hex.genmodel.easy.EasyPredictModelWrapper;
 import hex.genmodel.easy.prediction.*;
-import com.decisioning.gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b;
+import com.decisioning.drf_c79982d1_29c6_47bd_8950_897ba97ba737;
 
 public class RunModelMS {
 	
@@ -61,7 +61,7 @@ public class RunModelMS {
         amount = line.split(":")[36].trim().split(",")[0].split("\"")[1];
         
 		hex.genmodel.GenModel rawModel = null;
-		rawModel = (hex.genmodel.GenModel) new gbm_a65d8149_cfdc_4f33_bead_5d9456e4a93b();	    
+		rawModel = (hex.genmodel.GenModel) new drf_c79982d1_29c6_47bd_8950_897ba97ba737();	    
 		EasyPredictModelWrapper model = new EasyPredictModelWrapper(rawModel);
 	    RowData row = new RowData();
 	  
